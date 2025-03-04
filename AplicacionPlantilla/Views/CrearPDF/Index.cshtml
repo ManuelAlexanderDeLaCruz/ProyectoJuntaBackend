@@ -1,0 +1,89 @@
+﻿
+
+@model AplicacionPlantilla.Models.Carta
+@{
+    Layout = null;
+}
+<div>
+    <b>Destinatario</b>           @Model.Destinatario</br />
+    <b>CargoDestinatario</b>      @Model.CargoDestinatario
+    <b>EmpresaDestinatario</b>    @Model.EmpresaDestinatario
+    <b>DireccionDestinatario</b>  @Model.DireccionDestinatario
+    <b>CiudadDestinatario</b>     @Model.CiudadDestinatario
+    <b>Remitente</b>              @Model.Remitente
+    <b>DireccionRemitente</b>     @Model.DireccionRemitente
+    <b>EmailRemitente</b>         @Model.EmailRemitente
+    <b>TelefonoRemitente</b>      @Model.TelefonoRemitente
+    <b>Fecha</b>                  @Model.Fecha
+    <b>Contenido</b>              @Model.Contenido
+    <b>Destinatario</b>           @Model.Destinatario
+
+</div>
+
+@foreach (var carta in Model.cartas)
+{
+
+    <div class="container mt-4">
+        <h2>Generar Carta</h2> 
+
+        <div class="mb-3" style="border:1px solid #665; padding:20px;">
+            <label for="plantillaSelect" class="form-label">Seleccionar Plantilla</label>
+            <select class="form-select" id="plantillaSelect" [(ngModel)]="selectedPlantillaId">
+                <option *ngFor="let plantilla of plantillas" [value]="plantilla.id">{{ plantilla.nombre }}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="destinatario" class="form-label">Destinatario</label>
+            <input type="text" class="form-control" id="destinatario" [(ngModel)]="context.destinatario">
+        </div>
+
+        <div class="mb-3">
+            <label for="cargoDestinatario" class="form-label">Cargo Destinatario</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="empresaDestinatario" class="form-label">Empresa Destinatario</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="direccionDestinatario" class="form-label">Dirección Destinatario</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="ciudadDestinatario" class="form-label">Ciudad Destinatario</label>
+            <input type="text" class="form-control" id="ciudadDestinatario" [(ngModel)]="context.ciudadDestinatario">
+        </div>
+
+        <div class="mb-3">
+            <label for="remitente" class="form-label">Nombres</label>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="direccionRemitente" class="form-label">Dirección</label>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="emailRemitente" class="form-label">Email</label>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="telefonoRemitente" class="form-label">Teléfono</label>
+
+        </div>
+
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+        </div>
+
+        <div class="mb-3">
+            <label for="contenido" class="form-label">Contenido</label>
+        </div>
+
+        <button class="btn btn-primary" (click)="generarCarta()">Generar Carta</button>
+
+    </div>
+}
